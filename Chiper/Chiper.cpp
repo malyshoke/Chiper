@@ -1,45 +1,37 @@
 ﻿// Chiper.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
+
     #include <iostream>
+    #include <fstream>
     #include <string>
+    #include <mutex>
+    #include <chrono>
+    #include "algorithm.h"
     using namespace std;
-    int main()
+    int main(int argc, char* argv)
     {
+        mutex m;
+        string s;
+        string Input[]{ "data1.txt", "data2.txt" };
+        string Output[size(Input)]{ "res1.txt", "res2.txt" };
         setlocale(LC_ALL, "Rus");
-        int key;
-        string buff;
-        cout << "Введите ключ: " << endl;
-        cin >> key;
-        cout << "Введите сообщение, которое будет закодированно: " << endl;
-        getline(cin, buff);
-        getline(cin, buff);
-        cout << "Закодированное сообщение: " << endl;
-        for (int i = 0; i < buff.length(); i++)
-           if (buff[i] >= 'a' && buff[i] <= 'z')
+        for (size_t i = 0; i < size(Input); i++)
+        {
+            ifstream fin(Input[i]);
+            ofstream fout(Output[i]);
+            if (fin.is_open() && fout.is_open())
             {
-                buff[i] += (key % 26);
-                if (buff[i] > 'z') buff[i] -= 26;
+                cout << Input[i] << endl;
+                getline(fin, s);
+                fout << algorithm::CaesarAlgoritm(s) << endl;
+                fout << algorithm::DeCaesarAlgoritm(s) << endl;
+                fin.close();
+                fout.close();
             }
-           else if (buff[i] >= 'A' && buff[i] <= 'Z')
-           {
-               buff[i] += (key % 26);
-               if (buff[i] > 'Z') buff[i] -= 26;
-           }
-        cout << buff << endl;
-        cout << "Декодированное сообщение: " << endl;
-        for (int i = 0; i < buff.length(); i++)
-            if (buff[i] >= 'a' && buff[i] <= 'z')
-            {
-                buff[i] -= (key % 26);
-                if (buff[i] < 'a') buff[i] += 26;
-            }
-            else if  (buff[i] >= 'A' && buff[i] <= 'Z')
-            {
-                buff[i] -= (key % 26);
-                if (buff[i] < 'A') buff[i] += 26;
-            }
-        cout << buff << endl;
+            else
+                cerr << "Files could not open" << endl;
+        }
         return 0;
     }
 

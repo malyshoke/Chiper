@@ -1,4 +1,6 @@
 ﻿  Chiper.cpp
-C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Chiper.cpp(18,27): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Chiper.cpp(31,27): warning C4018: <: несоответствие типов со знаком и без знака
+  algorithm.cpp
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\algorithm.cpp(9,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\algorithm.cpp(30,23): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
   Chiper.vcxproj -> C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Debug\Chiper.exe

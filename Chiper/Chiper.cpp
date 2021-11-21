@@ -5,13 +5,20 @@
     #include <iostream>
     #include <fstream>
     #include <string>
-    #include <mutex>
     #include <chrono>
     #include "algorithm.h"
     using namespace std;
+    using namespace algorithm;
+    double countTime(string alg)
+    {
+        auto start = std::chrono::system_clock::now();
+        alg;
+        auto finish = std::chrono::system_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start).count();
+        return duration;
+    }
     int main(int argc, char* argv)
     {
-        mutex m;
         string s;
         string Input[]{ "data1.txt", "data2.txt" };
         string Output[size(Input)]{ "res1.txt", "res2.txt" };
@@ -22,10 +29,17 @@
             ofstream fout(Output[i]);
             if (fin.is_open() && fout.is_open())
             {
+                auto start = std::chrono::system_clock::now();
                 cout << Input[i] << endl;
                 getline(fin, s);
-                fout << algorithm::CaesarAlgoritm(s) << endl;
-                fout << algorithm::DeCaesarAlgoritm(s) << endl;
+                auto finish = std::chrono::system_clock::now();
+                auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start).count();
+                double readTime = duration;
+                cout <<"Время чтения:" << readTime << endl;
+                cout << "Время шифрования: " << countTime(CaesarAlgoritm(s)) << endl;
+                fout << s << endl;
+                cout << "Время дешифрования: " << countTime(DeCaesarAlgoritm(s)) << endl;
+                fout << s << endl;
                 fin.close();
                 fout.close();
             }

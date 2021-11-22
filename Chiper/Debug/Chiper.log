@@ -1,10 +1,10 @@
 ﻿  Chiper.cpp
-C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Chiper.cpp(18,16): warning C4244: return: преобразование "_Rep" в "double", возможна потеря данных
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Chiper.cpp(21,16): warning C4244: return: преобразование "_Rep" в "double", возможна потеря данных
           with
           [
               _Rep=__int64
           ]
-C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Chiper.cpp(38,33): warning C4244: инициализация: преобразование "_Rep" в "double", возможна потеря данных
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Chiper.cpp(48,37): warning C4244: инициализация: преобразование "_Rep" в "double", возможна потеря данных
           with
           [
               _Rep=__int64

@@ -6,45 +6,57 @@
     #include <fstream>
     #include <string>
     #include <chrono>
+    #include <vector>
     #include "algorithm.h"
     using namespace std;
     using namespace algorithm;
-    double countTime(string alg)
+    using Method = std::ifstream&(*) (std::ifstream&);
+
+    double countTime(Method alg, ifstream& data)
     {
         auto start = std::chrono::system_clock::now();
-        alg;
+        alg(data);
         auto finish = std::chrono::system_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start).count();
         return duration;
     }
+
     int main(int argc, char* argv)
     {
         string s;
         string Input[]{ "data1.txt", "data2.txt" };
         string Output[size(Input)]{ "res1.txt", "res2.txt" };
-        setlocale(LC_ALL, "Rus");
-        for (size_t i = 0; i < size(Input); i++)
+        vector<pair<Method, Method>> methods =
         {
-            ifstream fin(Input[i]);
-            ofstream fout(Output[i]);
-            if (fin.is_open() && fout.is_open())
+            {CaesarAlgoritm,DeCaesarAlgoritm}, {DESAlgoritm,DeDESAlgoritm}, {AESAlgoritm,DeAESAlgoritm}, {PlayfairAlgoritm,DePlayfairAlgoritm}, {ElgamalAlgoritm,DeElgamalAlgoritm},
+
+        };
+
+        setlocale(LC_ALL, "Rus");
+        for (auto method : methods)
+        {
+            for (size_t i = 0; i < size(Input); i++)
             {
-                auto start = std::chrono::system_clock::now();
-                cout << Input[i] << endl;
-                getline(fin, s);
-                auto finish = std::chrono::system_clock::now();
-                auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start).count();
-                double readTime = duration;
-                cout <<"Время чтения:" << readTime << endl;
-                cout << "Время шифрования: " << countTime(CaesarAlgoritm(s)) << endl;
-                fout << s << endl;
-                cout << "Время дешифрования: " << countTime(DeCaesarAlgoritm(s)) << endl;
-                fout << s << endl;
-                fin.close();
-                fout.close();
+                ifstream fin(Input[i]);
+                ofstream fout(Output[i]);
+                if (fin.is_open() && fout.is_open())
+                {
+                    auto start = std::chrono::system_clock::now();
+                    cout << Input[i] << endl;
+                    auto finish = std::chrono::system_clock::now();
+                    auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start).count();
+                    double readTime = duration;
+                    cout << "Время чтения:" << readTime << endl;
+                    cout << "Время шифрования: " << countTime(method.first, fin) << endl;
+                    fout << s << endl;
+                    cout << "Время дешифрования: " << countTime(method.second, fin) << endl;
+                    fout << s << endl;
+                    fin.close();
+                    fout.close();
+                }
+                else
+                    cerr << "Не удается открыть файл" << endl;
             }
-            else
-                cerr << "Files could not open" << endl;
         }
         return 0;
     }

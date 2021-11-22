@@ -1,83 +1,86 @@
 #include "algorithm.h"
 using namespace std;
-string algorithm::CaesarAlgoritm(string& s)
+
+ifstream& algorithm::CaesarAlgoritm(ifstream& st)
 {
-    int key;
-    cout << "Введите ключ: " << endl;
-    cin >> key;
-    cout << "Закодированное сообщение: " << endl;
-    for (int i = 0; i < s.length(); i++)
-        if (s[i] >= 'a' && s[i] <= 'z')
-        {
-            s[i] += (key % 26);
-            if (s[i] > 'z') s[i] -= 26;
-        }
-        else if (s[i] >= 'A' && s[i] <= 'Z')
-        {
-            s[i] += (key % 26);
-            if (s[i] > 'Z') s[i] -= 26;
-        }
-    cout << s << endl;
-    return s;
+    //int key;
+    //string s;
+    //cout << "Введите ключ: " << endl;
+    //cin >> key;
+    //cout << "Закодированное сообщение: " << endl;
+    //ifstream(s).rdbuf();
+    //for (int i = 0; i < s.length(); i++)
+    //    if (s[i] >= 'a' && s[i] <= 'z')
+    //    {
+    //        s[i] += (key % 26);
+    //        if (s[i] > 'z') s[i] -= 26;
+    //    }
+    //    else if (s[i] >= 'A' && s[i] <= 'Z')
+    //    {
+    //        s[i] += (key % 26);
+    //        if (s[i] > 'Z') s[i] -= 26;
+    //    }
+    //cout << s << endl;
+    return st;
 }
 
-string algorithm::DeCaesarAlgoritm(string& s)
+ifstream& algorithm::DeCaesarAlgoritm(ifstream& s)
 {   
-    int key;
-    cout << "Введите ключ: " << endl;
-    cin >> key;
-    cout << "Декодированное сообщение: " << endl;
-    for (int i = 0; i < s.length(); i++)
-        if (s[i] >= 'a' && s[i] <= 'z')
-        {
-            s[i] -= (key % 26);
-            if (s[i] < 'a') s[i] += 26;
-        }
-        else if (s[i] >= 'A' && s[i] <= 'Z')
-        {
-            s[i] -= (key % 26);
-            if (s[i] < 'A') s[i] += 26;
-        }
-    cout << s << endl;
+    //int key;
+    //cout << "Введите ключ: " << endl;
+    //cin >> key;
+    //cout << "Декодированное сообщение: " << endl;
+    //for (int i = 0; i < s.length(); i++)
+    //    if (s[i] >= 'a' && s[i] <= 'z')
+    //    {
+    //        s[i] -= (key % 26);
+    //        if (s[i] < 'a') s[i] += 26;
+    //    }
+    //    else if (s[i] >= 'A' && s[i] <= 'Z')
+    //    {
+    //        s[i] -= (key % 26);
+    //        if (s[i] < 'A') s[i] += 26;
+    //    }
+    //cout << s << endl;
     return s;
 }
 
-string algorithm::DESAlgoritm(string& s)
+ifstream& algorithm::DESAlgoritm(ifstream& s)
 {
     return s;
 }
 
-string algorithm::DeDESAlgoritm(string& s)
+ifstream& algorithm::DeDESAlgoritm(ifstream& s)
 {
     return s;
 }
 
-string algorithm::AESAlgoritm(string& s)
+ifstream& algorithm::AESAlgoritm(ifstream& s)
 {
     return s;
 }
 
-string algorithm::DeAESAlgoritm(string& s)
+ifstream& algorithm::DeAESAlgoritm(ifstream& s)
 {
     return s;
 }
 
-string algorithm::PlayfairAlgoritm(string& s)
+ifstream& algorithm::PlayfairAlgoritm(ifstream& s)
 {
     return s;
 }
 
-string algorithm::DePlayfairAlgoritm(string& s)
+ifstream& algorithm::DePlayfairAlgoritm(ifstream& s)
 {
     return s;
 }
 
-string algorithm::ElgamalAlgoritm(string& s)
+ifstream& algorithm::ElgamalAlgoritm(ifstream& s)
 {
     return s;
 }
 
-string algorithm::DeElgamalAlgoritm(string& s)
+ifstream& algorithm::DeElgamalAlgoritm(ifstream& s)
 {
     return s;
 }

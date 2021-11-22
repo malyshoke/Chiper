@@ -1,21 +1,22 @@
 #pragma once
 #include <iostream>
 #include <string>
-using namespace std;
+#include <fstream>
+
 namespace algorithm
 
 {	
 
-	string CaesarAlgoritm(string& s);
-	string DeCaesarAlgoritm(string& s);
-	string DESAlgoritm(string& s);
-	string DeDESAlgoritm(string& s);
-	string AESAlgoritm(string& s);
-	string DeAESAlgoritm(string& s);
-	string PlayfairAlgoritm(string& s);
-	string DePlayfairAlgoritm(string& s);
-	string ElgamalAlgoritm(string& s);
-	string DeElgamalAlgoritm(string& s);
+	std::ifstream& CaesarAlgoritm(std::ifstream& s);
+	std::ifstream& DeCaesarAlgoritm(std::ifstream& s);
+	std::ifstream& DESAlgoritm(std::ifstream& s);
+	std::ifstream& DeDESAlgoritm(std::ifstream& s);
+	std::ifstream& AESAlgoritm(std::ifstream& s);
+	std::ifstream& DeAESAlgoritm(std::ifstream& s);
+	std::ifstream& PlayfairAlgoritm(std::ifstream& s);
+	std::ifstream& DePlayfairAlgoritm(std::ifstream& s);
+	std::ifstream& ElgamalAlgoritm(std::ifstream& s);
+	std::ifstream& DeElgamalAlgoritm(std::ifstream& s);
 
 };
 

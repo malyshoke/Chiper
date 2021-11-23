@@ -23,7 +23,7 @@
 
     int main(int argc, char* argv)
     {
-        string s;
+        string s, name;
         string Input[]{ "data1.txt", "data2.txt" };
         string Output[size(Input)]{ "res1.txt", "res2.txt" };
         ostringstream buf;
@@ -51,6 +51,7 @@
                         double readTime = duration;
                         cout << "Время чтения:" << readTime << endl;
                         cout << "Время шифрования: " << countTime(method.first, s) << endl;
+                       // cout << __func__ << endl;
                         fout << "Зашифрованный текст: " << endl << s << endl;
                         /*cout << "Зашифрованный текст: " << endl << s << endl;*/
                         cout << "Время дешифрования: " << countTime(method.second, s) << endl;

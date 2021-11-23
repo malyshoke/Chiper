@@ -8,6 +8,7 @@
     #include <chrono>
     #include <vector>
     #include "algorithm.h"
+    #include "des.h"
     using namespace std;
     using namespace algorithm;
     using Method = std::string&(*) (std::string&);

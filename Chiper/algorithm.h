@@ -137,6 +137,7 @@ namespace algorithm
 		string des(string data, string key, MODE mode);
 		string ECB(string data, string key, MODE mode);
 		string CBC(string data, string key, string init_vector, MODE mode);
+	        //Конец .h для алгоритма DES
 	std::string& DeDESAlgoritm(std::string& s);
 	std::string& AESAlgoritm(std::string& s);
 	std::string& DeAESAlgoritm(std::string& s);

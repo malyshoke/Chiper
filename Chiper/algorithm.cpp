@@ -306,12 +306,148 @@ string& algorithm::DeDESAlgoritm(string& s)
 }
 /*----------------------------------------------------------------------------------ЗДЕСЬ DES КОНЧИЛСЯ---------------------------------------------------------------------*/
 string& algorithm::AESAlgoritm(string& s)
+{ =========================================================================//
+//
+//  Шифрование
+// 
+void aes::encrypt(const byte in[block_size], byte out[block_size])
 {
+    //  Указатель на раундовые константы
+    u32* rk = encryption_round_key;
+
+    //  Считываем блок и добавляем раундовый ключ.
+    u32     a0 = get(&in[0]) ^ rk[0];
+    u32     a1 = get(&in[4]) ^ rk[1];
+    u32     a2 = get(&in[8]) ^ rk[2];
+    u32     a3 = get(&in[12]) ^ rk[3];
+    u32     b0, b1, b2, b3;
+
+    //  Раунды криптования (цикл развёрнут 2x)
+    for (int i = rounds; ; rk += 8)
+    {
+        b0 = fb(a0, 0) ^ fb(a1, 1) ^ fb(a2, 2) ^ fb(a3, 3) ^ rk[4];
+        b1 = fb(a1, 0) ^ fb(a2, 1) ^ fb(a3, 2) ^ fb(a0, 3) ^ rk[5];
+        b2 = fb(a2, 0) ^ fb(a3, 1) ^ fb(a0, 2) ^ fb(a1, 3) ^ rk[6];
+        b3 = fb(a3, 0) ^ fb(a0, 1) ^ fb(a1, 2) ^ fb(a2, 3) ^ rk[7];
+
+        //  Сверхумный MSVC разворачивает цикл, что раздувает размер
+        //  и снижает (!) скорость на 10%.
+        //  приходится добавлять лишний байт :-(.
+#if defined(_MSC_VER) && ! defined(__cplusplus_cli)
+        ;
+#endif
+
+        if (!(i -= 2)) break;
+
+        a0 = fb(b0, 0) ^ fb(b1, 1) ^ fb(b2, 2) ^ fb(b3, 3) ^ rk[8];
+        a1 = fb(b1, 0) ^ fb(b2, 1) ^ fb(b3, 2) ^ fb(b0, 3) ^ rk[9];
+        a2 = fb(b2, 0) ^ fb(b3, 1) ^ fb(b0, 2) ^ fb(b1, 3) ^ rk[10];
+        a3 = fb(b3, 0) ^ fb(b0, 1) ^ fb(b1, 2) ^ fb(b2, 3) ^ rk[11];
+    }
+
+    //  Последний раунд (без перемешивания столбцов)
+    put(
+        rk[8] ^ s_box[b3 >> 24] << 24
+        ^ s_box[b2 >> 16 & 0xFF] << 16
+        ^ s_box[b1 >> 8 & 0xFF] << 8
+        ^ s_box[b0 >> 0 & 0xFF] << 0
+        , &out[0]
+    );
+    put(
+        rk[9] ^ s_box[b0 >> 24] << 24
+        ^ s_box[b3 >> 16 & 0xFF] << 16
+        ^ s_box[b2 >> 8 & 0xFF] << 8
+        ^ s_box[b1 >> 0 & 0xFF] << 0
+        , &out[4]
+    );
+    put(
+        rk[10] ^ s_box[b1 >> 24] << 24
+        ^ s_box[b0 >> 16 & 0xFF] << 16
+        ^ s_box[b3 >> 8 & 0xFF] << 8
+        ^ s_box[b2 >> 0 & 0xFF] << 0
+        , &out[8]
+    );
+    put(
+        rk[11] ^ s_box[b2 >> 24] << 24
+        ^ s_box[b1 >> 16 & 0xFF] << 16
+        ^ s_box[b0 >> 8 & 0xFF] << 8
+        ^ s_box[b3 >> 0 & 0xFF] << 0
+        , &out[12]
+    );
+}
     return s;
 }
 
-string& algorithm::DeAESAlgoritm(string& s)
+string& algorithm::DeAESAlgoritm(string& s)	
+{ //=========================================================================//
+//
+//  Расшифровывание.
+// 
+void aes::decrypt(const byte in[block_size], byte out[block_size])
 {
+    //  Указатель на раундовые константы
+    u32* rk = decryption_round_key;
+
+    //  Считываем блок и добавляем раундовый ключ.
+    u32     a0 = get(&in[0]) ^ rk[0];
+    u32     a1 = get(&in[4]) ^ rk[1];
+    u32     a2 = get(&in[8]) ^ rk[2];
+    u32     a3 = get(&in[12]) ^ rk[3];
+    u32     b0, b1, b2, b3;
+
+    //  Раунды разкриптования (цикл развёрнут 2x)
+    for (int i = rounds; ; rk += 8)
+    {
+        b0 = rb(a0, 0) ^ rb(a3, 1) ^ rb(a2, 2) ^ rb(a1, 3) ^ rk[4];
+        b1 = rb(a1, 0) ^ rb(a0, 1) ^ rb(a3, 2) ^ rb(a2, 3) ^ rk[5];
+        b2 = rb(a2, 0) ^ rb(a1, 1) ^ rb(a0, 2) ^ rb(a3, 3) ^ rk[6];
+        b3 = rb(a3, 0) ^ rb(a2, 1) ^ rb(a1, 2) ^ rb(a0, 3) ^ rk[7];
+
+        //  Сверхумный MSVC разворачивает цикл, что раздувает размер
+        //  и снижает (!) скорость.
+        //  приходится добавлять лишний байт :-(.
+#if defined(_MSC_VER) && ! defined(__cplusplus_cli)
+        
+#endif
+
+        if (!(i -= 2)) break;
+
+        a0 = rb(b0, 0) ^ rb(b3, 1) ^ rb(b2, 2) ^ rb(b1, 3) ^ rk[8];
+        a1 = rb(b1, 0) ^ rb(b0, 1) ^ rb(b3, 2) ^ rb(b2, 3) ^ rk[9];
+        a2 = rb(b2, 0) ^ rb(b1, 1) ^ rb(b0, 2) ^ rb(b3, 3) ^ rk[10];
+        a3 = rb(b3, 0) ^ rb(b2, 1) ^ rb(b1, 2) ^ rb(b0, 3) ^ rk[11];
+    }
+
+    //  Последний раунд (без перемешивания столбцов)
+    put(
+        rk[8] ^ r_box[b1 >> 24] << 24
+        ^ r_box[b2 >> 16 & 0xFF] << 16
+        ^ r_box[b3 >> 8 & 0xFF] << 8
+        ^ r_box[b0 >> 0 & 0xFF] << 0
+        , &out[0]
+    );
+    put(
+        rk[9] ^ r_box[b2 >> 24] << 24
+        ^ r_box[b3 >> 16 & 0xFF] << 16
+        ^ r_box[b0 >> 8 & 0xFF] << 8
+        ^ r_box[b1 >> 0 & 0xFF] << 0
+        , &out[4]
+    );
+    put(
+        rk[10] ^ r_box[b3 >> 24] << 24
+        ^ r_box[b0 >> 16 & 0xFF] << 16
+        ^ r_box[b1 >> 8 & 0xFF] << 8
+        ^ r_box[b2 >> 0 & 0xFF] << 0
+        , &out[8]
+    );
+    put(
+        rk[11] ^ r_box[b0 >> 24] << 24
+        ^ r_box[b1 >> 16 & 0xFF] << 16
+        ^ r_box[b2 >> 8 & 0xFF] << 8
+        ^ r_box[b3 >> 0 & 0xFF] << 0
+        , &out[12]
+    );
+}
     return s;
 }
 

@@ -7,7 +7,8 @@ string result_en1;
 string& algorithm::CaesarAlgoritm(string& s)
 {
     int key;
-    cout << "Введите ключ: " << endl;
+	cout << __func__ << endl;
+    cout << "Введите ключ " << endl;
     cin >> key;
     for (int i = 0; i < s.length(); i++)
         if (s[i] >= 'a' && s[i] <= 'z')
@@ -27,6 +28,7 @@ string& algorithm::CaesarAlgoritm(string& s)
 string& algorithm::DeCaesarAlgoritm(string& s)
 {   
     int key;
+	cout << __func__ << endl;
     cout << "Введите ключ: " << endl;
     cin >> key;
     for (int i = 0; i < s.length(); i++)
@@ -256,7 +258,8 @@ string ECB_en(string data, string key, MODE mode) {// режим кодовой 
 
 string& algorithm::DESAlgoritm(string& s)
 { string key;
-					cout << "Введите ключ(8 символов): " << endl;
+cout << __func__ << endl;
+					cout << "Введите ключ (8 символов): " << endl;
 					cin >> key; // Устанавливаем ключ
 
 					string plaintext = s;
@@ -281,7 +284,8 @@ string& algorithm::DeDESAlgoritm(string& s)
 {
     
     string key;
-					cout << "Введите ключ(8 символов): " << endl;
+	cout << __func__ << endl;
+					cout << "Введите ключ (8 символов): " << endl;
 					cin >> key; // Устанавливаем ключ
 
 					string res = result_en1;

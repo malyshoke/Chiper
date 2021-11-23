@@ -30,7 +30,7 @@
         ostringstream buf;
         vector<pair<Method, Method>> methods =
         {
-            {CaesarAlgoritm,DeCaesarAlgoritm}, {DESAlgoritm,DeDESAlgoritm}, {AESAlgoritm,DeAESAlgoritm}, {PlayfairAlgoritm,DePlayfairAlgoritm}, {ElgamalAlgoritm,DeElgamalAlgoritm},
+           {CaesarAlgoritm,DeCaesarAlgoritm}, {DESAlgoritm,DeDESAlgoritm}, {AESAlgoritm,DeAESAlgoritm}, {PlayfairAlgoritm,DePlayfairAlgoritm}, {ElgamalAlgoritm,DeElgamalAlgoritm},
 
         };
 
@@ -41,7 +41,7 @@
                 ofstream fout(Output[i]);
                 if (fin.is_open() && fout.is_open())
                 {
-                    for (auto method : methods) {
+                    
                         auto start = std::chrono::system_clock::now();
                         cout << Input[i] << endl;
                         ostringstream buf;
@@ -51,13 +51,14 @@
                         auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start).count();
                         double readTime = duration;
                         cout << "Время чтения:" << readTime << endl;
+                        for (auto method : methods) {
                         cout << "Время шифрования: " << countTime(method.first, s) << endl;
                        // cout << __func__ << endl;
                         fout << "Зашифрованный текст: " << endl << s << endl;
-                        /*cout << "Зашифрованный текст: " << endl << s << endl;*/
+                        cout << "Зашифрованный текст: " << endl << s << endl;
                         cout << "Время дешифрования: " << countTime(method.second, s) << endl;
                         fout << "Дешифрованный текст: " << endl << s << endl;
-                        /*cout << "Дешифрованный текст: " << endl << s << endl;*/
+                        cout << "Дешифрованный текст: " << endl << s << endl;
                         fin.close();
                         fout.close();
                     }

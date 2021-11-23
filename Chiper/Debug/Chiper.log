@@ -1,12 +1,6 @@
-﻿  Chiper.cpp
-C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Chiper.cpp(21,16): warning C4244: return: преобразование "_Rep" в "double", возможна потеря данных
-          with
-          [
-              _Rep=__int64
-          ]
-C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Chiper.cpp(51,41): warning C4244: инициализация: преобразование "_Rep" в "double", возможна потеря данных
-          with
-          [
-              _Rep=__int64
-          ]
+﻿  algorithm.cpp
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\algorithm.cpp(13,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\algorithm.cpp(34,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\algorithm.cpp(207): warning C4715: des_en: значение возвращается не при всех путях выполнения
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\algorithm.cpp(229): warning C4715: des_de: значение возвращается не при всех путях выполнения
   Chiper.vcxproj -> C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Debug\Chiper.exe

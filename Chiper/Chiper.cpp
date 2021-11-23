@@ -34,34 +34,35 @@
         };
 
         setlocale(LC_ALL, "Rus");
-        for (auto method : methods)
-        {
             for (size_t i = 0; i < size(Input); i++)
             {
                 ifstream fin(Input[i]);
                 ofstream fout(Output[i]);
                 if (fin.is_open() && fout.is_open())
                 {
-                    auto start = std::chrono::system_clock::now();
-                    cout << Input[i] << endl;
-                    ostringstream buf;
-                    buf << fin.rdbuf();
-                    s = buf.str();
-                    auto finish = std::chrono::system_clock::now();
-                    auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start).count();
-                    double readTime = duration;
-                    cout << "Время чтения:" << readTime << endl;
-                    cout << "Время шифрования: " << countTime(method.first, s) << endl;
-                    fout << "Зашифрованный текст: "<< endl << s << endl;
-                    cout << "Время дешифрования: " << countTime(method.second, s) << endl;
-                    fout << "Дешифрованный текст: " << endl << s << endl;
-                    fin.close();
-                    fout.close();
+                    for (auto method : methods) {
+                        auto start = std::chrono::system_clock::now();
+                        cout << Input[i] << endl;
+                        ostringstream buf;
+                        buf << fin.rdbuf();
+                        s = buf.str();
+                        auto finish = std::chrono::system_clock::now();
+                        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start).count();
+                        double readTime = duration;
+                        cout << "Время чтения:" << readTime << endl;
+                        cout << "Время шифрования: " << countTime(method.first, s) << endl;
+                        fout << "Зашифрованный текст: " << endl << s << endl;
+                        /*cout << "Зашифрованный текст: " << endl << s << endl;*/
+                        cout << "Время дешифрования: " << countTime(method.second, s) << endl;
+                        fout << "Дешифрованный текст: " << endl << s << endl;
+                        /*cout << "Дешифрованный текст: " << endl << s << endl;*/
+                        fin.close();
+                        fout.close();
+                    }
                 }
                 else
                     cerr << "Не удается открыть файл" << endl;
             }
-        }
         return 0;
     }
 

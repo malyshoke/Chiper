@@ -4,7 +4,7 @@ C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Chiper.cpp(21,16): warning 
           [
               _Rep=__int64
           ]
-C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Chiper.cpp(52,37): warning C4244: инициализация: преобразование "_Rep" в "double", возможна потеря данных
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Chiper.cpp(51,41): warning C4244: инициализация: преобразование "_Rep" в "double", возможна потеря данных
           with
           [
               _Rep=__int64

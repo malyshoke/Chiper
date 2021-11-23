@@ -1,7 +1,7 @@
 ﻿// Chiper.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
-
+    #include <sstream>
     #include <iostream>
     #include <fstream>
     #include <string>
@@ -10,9 +10,9 @@
     #include "algorithm.h"
     using namespace std;
     using namespace algorithm;
-    using Method = std::ifstream&(*) (std::ifstream&);
+    using Method = std::string&(*) (std::string&);
 
-    double countTime(Method alg, ifstream& data)
+    double countTime(Method alg, string& data)
     {
         auto start = std::chrono::system_clock::now();
         alg(data);
@@ -26,6 +26,7 @@
         string s;
         string Input[]{ "data1.txt", "data2.txt" };
         string Output[size(Input)]{ "res1.txt", "res2.txt" };
+        ostringstream buf;
         vector<pair<Method, Method>> methods =
         {
             {CaesarAlgoritm,DeCaesarAlgoritm}, {DESAlgoritm,DeDESAlgoritm}, {AESAlgoritm,DeAESAlgoritm}, {PlayfairAlgoritm,DePlayfairAlgoritm}, {ElgamalAlgoritm,DeElgamalAlgoritm},
@@ -43,14 +44,17 @@
                 {
                     auto start = std::chrono::system_clock::now();
                     cout << Input[i] << endl;
+                    ostringstream buf;
+                    buf << fin.rdbuf();
+                    s = buf.str();
                     auto finish = std::chrono::system_clock::now();
                     auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start).count();
                     double readTime = duration;
                     cout << "Время чтения:" << readTime << endl;
-                    cout << "Время шифрования: " << countTime(method.first, fin) << endl;
-                    fout << s << endl;
-                    cout << "Время дешифрования: " << countTime(method.second, fin) << endl;
-                    fout << s << endl;
+                    cout << "Время шифрования: " << countTime(method.first, s) << endl;
+                    fout << "Зашифрованный текст: "<< endl << s << endl;
+                    cout << "Время дешифрования: " << countTime(method.second, s) << endl;
+                    fout << "Дешифрованный текст: " << endl << s << endl;
                     fin.close();
                     fout.close();
                 }

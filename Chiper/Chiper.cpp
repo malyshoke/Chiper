@@ -50,21 +50,22 @@
                         auto finish = std::chrono::system_clock::now();
                         auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(finish - start).count();
                         double readTime = duration;
-                        cout << "Время чтения:" << readTime << endl;
+                        cout << "Time of read: " << readTime << endl;
                         for (auto method : methods) {
-                        cout << "Время шифрования: " << countTime(method.first, s) << endl;
-                       // cout << __func__ << endl;
-                        fout << "Зашифрованный текст: " << endl << s << endl;
-                        cout << "Зашифрованный текст: " << endl << s << endl;
-                        cout << "Время дешифрования: " << countTime(method.second, s) << endl;
-                        fout << "Дешифрованный текст: " << endl << s << endl;
-                        cout << "Дешифрованный текст: " << endl << s << endl;
+                        cout << "Encryption time: " << countTime(method.first, s) << endl;
+                        fout << "Encrypted text: " << endl << s << endl;
+                        cout << "Encrypted text: " << endl << s << endl;
+                        cout << "Decryption time: " << countTime(method.second, s) << endl;
+                        fout << "Decrypted text: " << endl << s << endl;
+                        fout << endl;
+                        cout << "Decrypted text: " << endl << s << endl;
+
+                    }
                         fin.close();
                         fout.close();
-                    }
                 }
                 else
-                    cerr << "Не удается открыть файл" << endl;
+                    cerr << "Can't open file" << endl;
             }
         return 0;
     }

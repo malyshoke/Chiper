@@ -1,4 +1,25 @@
-Зашифрованный текст: 
+Encrypted text: 
 SPNBTILBQFOBMXFmmpx
-Дешифрованный текст: 
+Decrypted text: 
 ROMASHKAPENALWEllow
+
+Encrypted text: 
+ROMASHKAPENALWEllow
+Decrypted text: 
+ROMASHKAPENALWEllow
+
+Encrypted text: 
+ROMASHKAPENALWEllow
+Decrypted text: 
+ROMASHKAPENALWEllow
+
+Encrypted text: 
+ROMASHKAPENALWEllow
+Decrypted text: 
+ROMASHKAPENALWEllow
+
+Encrypted text: 
+ROMASHKAPENALWEllow
+Decrypted text: 
+ROMASHKAPENALWEllow
+

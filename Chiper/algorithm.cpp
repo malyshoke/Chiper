@@ -238,7 +238,7 @@ string ECB_en(string data, string key, MODE mode) {// режим кодовой 
 													//cout << "final cipher: ";
 												}
 												result_en1 = result_en;
-												cout << result_en << endl << endl;
+												//cout << result_en << endl << endl;
 												return result_en;
 											}
 
@@ -252,7 +252,7 @@ string ECB_en(string data, string key, MODE mode) {// режим кодовой 
 													}
 													//cout << "final plaintext: " << endl;
 												}
-												cout << result_de << endl << endl;
+												//cout << result_de << endl << endl;
 												return result_de;
 											}
 

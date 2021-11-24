@@ -332,11 +332,6 @@ string ToValid(string s, int l) {
 		}
 		else { m += s[i]; }
 	}
-	for (int i = 0; i < l; i++) {
-		if (m[i] >= 97 && m[i] <= 122) {
-		}
-		else { cout << "\r\nWRONG TRY AGAIN!\r\n"; break; }
-	}
 	return m;
 }
 
@@ -345,7 +340,7 @@ string& algorithm::PlayfairAlgoritm(string& s)
 	char alp[26] = { 0 };
 	char M[5][5] = { 0 };
 
-	cout << "Enter your key\r\n>";
+	cout << "Enter the key: ";
 	string key;
 	cin >> key;
 	int k_len = len(key);
@@ -474,8 +469,6 @@ string& algorithm::PlayfairAlgoritm(string& s)
 		}
 
 	}
-	cout << "Your encrypted sage is: ";
-	cout << encrypted;
 	return encrypted;
 }
 
@@ -484,7 +477,7 @@ string& algorithm::DePlayfairAlgoritm(string& str)
 	char alp[26] = { 0 };
 	char M[5][5] = { 0 };
 	string encrypted;
-	cout << "Enter your key\r\n>";
+	cout << "Enter the key : ";
 	string key;
 	cin >> key;
 	int k_len = len(key);
@@ -542,7 +535,6 @@ string& algorithm::DePlayfairAlgoritm(string& str)
 		}
 
 	}
-	cout << decrypted;
 	return decrypted;
 }
 

@@ -1,1 +1,8 @@
-﻿  Chiper.vcxproj -> C:\Users\илья\Desktop\1\Chiper\Chiper\Debug\Chiper.exe
+﻿  algorithm.cpp
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\algorithm.cpp(13,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\algorithm.cpp(34,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\algorithm.cpp(207): warning C4715: des_en: значение возвращается не при всех путях выполнения
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\algorithm.cpp(229): warning C4715: des_de: значение возвращается не при всех путях выполнения
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\algorithm.cpp(538): warning C4172: возвращение адреса локальной или временной переменной : decrypted
+C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\algorithm.cpp(472): warning C4172: возвращение адреса локальной или временной переменной : encrypted
+  Chiper.vcxproj -> C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Debug\Chiper.exe

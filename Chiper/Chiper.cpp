@@ -30,7 +30,7 @@
         ostringstream buf;
         vector<pair<Method, Method>> methods =
         {
-           {CaesarAlgoritm,DeCaesarAlgoritm}, {DESAlgoritm,DeDESAlgoritm}, {AESAlgoritm,DeAESAlgoritm}, {PlayfairAlgoritm,DePlayfairAlgoritm}, {VigenereAlgoritm,DeVigenereAlgoritm},
+           {CaesarAlgoritm,DeCaesarAlgoritm}, {DESAlgoritm,DeDESAlgoritm}, {VigenereAlgoritm,DeVigenereAlgoritm}, {AESAlgoritm,DeAESAlgoritm}, {PlayfairAlgoritm,DePlayfairAlgoritm},
 
         };
 
@@ -54,11 +54,11 @@
                         for (auto method : methods) {
                         cout << "Encryption time: " << countTime(method.first, s) << endl;
                         fout << "Encrypted text: " << endl << s << endl;
-                        cout << "Encrypted text: " << endl << s << endl;
+                        //cout << "Encrypted text: " << endl << s << endl;
                         cout << "Decryption time: " << countTime(method.second, s) << endl;
                         fout << "Decrypted text: " << endl << s << endl;
                         fout << endl;
-                        cout << "Decrypted text: " << endl << s << endl;
+                        //cout << "Decrypted text: " << endl << s << endl;
 
                     }
                         fin.close();

@@ -8,8 +8,9 @@ string& algorithm::CaesarAlgoritm(string& s)
 {
     int key;
 	cout << __func__ << endl;
-    cout << "Enter the key: " << endl;
-    cin >> key;
+    /*cout << "Enter the key: " << endl;
+    cin >> key;*/
+	key = 1;
     for (int i = 0; i < s.length(); i++)
         if (s[i] >= 'a' && s[i] <= 'z')
         {
@@ -29,8 +30,9 @@ string& algorithm::DeCaesarAlgoritm(string& s)
 {   
     int key;
 	cout << __func__ << endl;
-    cout << "Enter the key: " << endl;
-    cin >> key;
+    //cout << "Enter the key: " << endl;
+    //cin >> key;
+	key = 1;
     for (int i = 0; i < s.length(); i++)
         if (s[i] >= 'a' && s[i] <= 'z')
         {
@@ -259,9 +261,9 @@ string ECB_en(string data, string key, MODE mode) {// режим кодовой 
 string& algorithm::DESAlgoritm(string& s)
 { string key;
 cout << __func__ << endl;
-					cout << "Enter the key (8 symbols):  " << endl;
-					cin >> key; // Устанавливаем ключ
-
+					//cout << "Enter the key (8 symbols):  " << endl;
+					//cin >> key; // Устанавливаем ключ
+					key = "programmer";
 					string plaintext = s;
 					//cout << "plaintext: ";
 					//cout << plaintext << endl << endl;
@@ -285,9 +287,9 @@ string& algorithm::DeDESAlgoritm(string& s)
     
     string key;
 	cout << __func__ << endl;
-					cout << "Enter the key (8 symbols):  " << endl;
-					cin >> key; // Устанавливаем ключ
-
+					//cout << "Enter the key (8 symbols):  " << endl;
+					//cin >> key; // Устанавливаем ключ
+					key = "programmer";
 					string res = result_en1;
 					//cout << "cipher: ";
 					//cout << res << endl << endl;
@@ -340,9 +342,11 @@ string& algorithm::PlayfairAlgoritm(string& s)
 	char alp[26] = { 0 };
 	char M[5][5] = { 0 };
 
-	cout << "Enter the key: ";
+	/*cout << "Enter the key: ";
+	cin >> key;*/
 	string key;
-	cin >> key;
+	cout << __func__ << endl;
+	key = "programmer";
 	int k_len = len(key);
 
 	int m_len = len(s);
@@ -478,9 +482,11 @@ string& algorithm::DePlayfairAlgoritm(string& str)
 	char alp[26] = { 0 };
 	char M[5][5] = { 0 };
 	string encrypted;
-	cout << "Enter the key : ";
+	/*cout << "Enter the key : ";
+	cin >> key;*/
 	string key;
-	cin >> key;
+	cout << __func__ << endl;
+	key = "programmer";
 	int k_len = len(key);
 	encrypted = str;
 	string decrypted;
@@ -545,8 +551,9 @@ string& algorithm::VigenereAlgoritm(string& s)
 	cout << __func__ << endl;
 	string B; string C; string D;
 	B = s;
-	cout << "Enter the key: " << endl;
-	cin >> C;
+	/*cout << "Enter the key: " << endl;
+	cin >> C;*/
+	C = "programmer";
 	int c = C.size(); //делаем замену переменных для удобства
 	int b = B.size();
 	int k = 0;
@@ -569,7 +576,7 @@ string& algorithm::VigenereAlgoritm(string& s)
 			D = D + C[s];
 		}
 	}
-	cout << "New key: " << D << endl;
+	//cout << "New key: " << D << endl;
 
 	for (int i = 0; i < b; i++) {
 		k = (int)(D[i]);
@@ -583,8 +590,9 @@ string& algorithm::DeVigenereAlgoritm(string& s)
 	string B; string C; string D;
 	cout << __func__ << endl;
 	B = s;
-	cout << "Enter the key: " << endl;
-	cin >> C;
+	//cout << "Enter the key: " << endl;
+	//cin >> C;
+	C = "programmer";
 	int c = C.size(); //делаем замену переменных для удобства
 	int b = B.size();
 	int k = 0;
@@ -606,7 +614,7 @@ string& algorithm::DeVigenereAlgoritm(string& s)
 			D = D + C[s];
 		}
 	}
-	cout << "New key: " << D << endl;
+	//cout << "New key: " << D << endl;
 	for (int i = 0; i < b; i++) {
 		k = (int)(D[i]);
 		B[i] -= k;

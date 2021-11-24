@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 
-
 namespace algorithm
 
 {	
@@ -19,4 +18,9 @@ namespace algorithm
 	std::string& DeVigenereAlgoritm(std::string& s);
 
 };
+
+
+
+
+
 

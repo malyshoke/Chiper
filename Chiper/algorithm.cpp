@@ -360,7 +360,7 @@ string& algorithm::VigenereAlgoritm(string& s)
 		k = (int)(D[i]);
 		B[i] += k;
 	}
-    return B;
+    return s=B;
 }
 
 string& algorithm::DeVigenereAlgoritm(string& s)
@@ -368,11 +368,11 @@ string& algorithm::DeVigenereAlgoritm(string& s)
 	string B; string C; string D;
 	cout << __func__ << endl;
 	B = s;
+	cout << "Enter the key: " << endl;
+	cin >> C;
 	int c = C.size(); //делаем замену переменных для удобства
 	int b = B.size();
 	int k = 0;
-	cout << "Enter the key: " << endl;
-	cin >> C;
 	if (b >= c)
 	{
 		for (int i = 0; i < (b / c); i++)
@@ -397,5 +397,5 @@ string& algorithm::DeVigenereAlgoritm(string& s)
 		B[i] -= k;
 	}
 
-    return B;
+    return s=B;
 }

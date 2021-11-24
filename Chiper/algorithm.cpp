@@ -315,14 +315,235 @@ string& algorithm::DeAESAlgoritm(string& s)
    
 }
 
-string& algorithm::PlayfairAlgoritm(string& s)
-{
-    return s;
+
+int len(string s) {
+	int l = 0;
+	for (int i = 0; s[i] != '\0'; i++) {
+		l++;
+	}
+	return l;
 }
 
-string& algorithm::DePlayfairAlgoritm(string& s)
+string ToValid(string s, int l) {
+	string m;
+	for (int i = 0; i < l; i++) {
+		if (isupper(s[i])) {
+			m += tolower(s[i]);
+		}
+		else { m += s[i]; }
+	}
+	for (int i = 0; i < l; i++) {
+		if (m[i] >= 97 && m[i] <= 122) {
+		}
+		else { cout << "\r\nWRONG TRY AGAIN!\r\n"; break; }
+	}
+	return m;
+}
+
+string& algorithm::PlayfairAlgoritm(string& s)
 {
-    return s;
+	char alp[26] = { 0 };
+	char M[5][5] = { 0 };
+
+	cout << "Enter your key\r\n>";
+	string key;
+	cin >> key;
+	int k_len = len(key);
+
+	int m_len = len(s);
+	key = ToValid(key, k_len);
+	k_len = len(key);
+	for (int i = 0; i < k_len; i++) {
+		char ch = key[i];
+		alp[ch - 97] = 1;
+	}
+
+	for (int i = 0; i < 26; i++) {
+		if (alp[i] == 1) {
+			s += (char)i + 97;
+		}
+	}
+	key = s;
+	k_len = len(key);
+
+	s = ToValid(s, m_len);
+	m_len = len(s);
+	string d;
+	for (int i = 0; i < m_len; i++) {
+		if (s[i] != 'j') {
+			d += s[i];
+		}
+		else { d += 'i'; }
+	}
+	s = d;
+	m_len = len(s);
+	string ss;
+	for (int i = 0; i < m_len; i++) {
+		if (i > 0) {
+			if (s[i - 1] == s[i]) {
+				ss += 'x';
+				ss += s[i];
+			}
+			else {
+				ss += s[i];
+			}
+		}
+		else { ss += s[i]; }
+	}
+	s = ss;
+	m_len = len(s);
+	if (m_len % 2 != 0) {
+		s += 'x';
+		m_len++;
+	}
+	int n = 0;
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++) {
+			if (n < k_len) {
+				M[i][j] = key[n];
+				n++;
+			}
+		}
+	}
+	char ch = 97;
+	string filtred;
+	while (len(filtred) < 25 - k_len) {
+		for (int i = 0; i < k_len; i++) {
+			if (key[i] == ch) {
+				ch++;
+				i = 0;
+			}
+		}
+		if (ch != 'j') {
+			filtred += ch;
+			ch++;
+		}
+		else { ch++; }
+	}
+	int c = 0;
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++) {
+			if (i * 5 + j + 1 > k_len) {
+				M[i][j] = filtred[c];
+				c++;
+			}
+		}
+	}
+	string encrypted;
+	for (int i = 0; i < m_len; i += 2) {
+		char ch1 = s[i];
+		char ch2 = s[i + 1];
+		int ch1_i = 0;
+		int ch1_j = 0;
+		int ch2_i = 0;
+		int ch2_j = 0;
+		for (int o = 0; o < 5; o++) {
+			for (int t = 0; t < 5; t++) {
+				if (M[o][t] == ch1) {
+					ch1_i = o;
+					ch1_j = t;
+				}
+				if (M[o][t] == ch2) {
+					ch2_i = o;
+					ch2_j = t;
+				}
+			}
+		}
+		if (ch1_i == ch2_i) {
+			ch1_j++;
+			ch1_j %= 5;
+			ch2_j++;
+			ch2_j %= 5;
+			encrypted += M[ch1_i][ch1_j];
+			encrypted += M[ch1_i][ch2_j];
+		}
+		if (ch1_j == ch2_j) {
+			ch1_i++;
+			ch1_i %= 5;
+			ch2_i++;
+			ch2_i %= 5;
+			encrypted += M[ch1_i][ch1_j];
+			encrypted += M[ch2_i][ch1_j];
+		}
+		if (ch1_i != ch2_i && ch1_j != ch2_j) {
+			int temp = ch1_i;
+			ch1_i = ch2_i;
+			ch2_i = temp;
+			encrypted += M[ch1_i][ch1_j];
+			encrypted += M[ch2_i][ch2_j];
+		}
+
+	}
+	cout << "Your encrypted sage is: ";
+	cout << encrypted;
+	return encrypted;
+}
+
+string& algorithm::DePlayfairAlgoritm(string& str)
+{
+	char alp[26] = { 0 };
+	char M[5][5] = { 0 };
+	string encrypted;
+	cout << "Enter your key\r\n>";
+	string key;
+	cin >> key;
+	int k_len = len(key);
+	encrypted = str;
+	string decrypted;
+	for (int i = 0; i < len(encrypted); i += 2) {
+		char ch1 = encrypted[i];
+		char ch2 = encrypted[i + 1];
+		int ch1_i = 0;
+		int ch1_j = 0;
+		int ch2_i = 0;
+		int ch2_j = 0;
+		for (int o = 0; o < 5; o++) {
+			for (int t = 0; t < 5; t++) {
+				if (M[o][t] == ch1) {
+					ch1_i = o;
+					ch1_j = t;
+				}
+				if (M[o][t] == ch2) {
+					ch2_i = o;
+					ch2_j = t;
+				}
+			}
+		}
+		if (ch1_i == ch2_i) {
+			ch1_j -= 1;
+			if (ch1_j < 0) {
+				ch1_j = 5 - ch1_j;
+			}
+			ch2_j -= 1;
+			if (ch2_j < 0) {
+				ch2_j = 5 - ch2_j;
+			}
+			decrypted += M[ch1_i][ch1_j];
+			decrypted += M[ch1_i][ch2_j];
+		}
+		if (ch1_j == ch2_j) {
+			ch1_i -= 1;
+			if (ch1_i < 0) {
+				ch1_i = 5 - ch1_i;
+			}
+			ch2_i -= 1;
+			if (ch2_i < 0) {
+				ch2_i = 5 - ch2_i;
+			}
+			decrypted += M[ch1_i][ch1_j];
+			decrypted += M[ch2_i][ch1_j];
+		}
+		if (ch1_i != ch2_i && ch1_j != ch2_j) {
+			int temp = ch1_i;
+			ch1_i = ch2_i;
+			ch2_i = temp;
+			decrypted += M[ch1_i][ch1_j];
+			decrypted += M[ch2_i][ch2_j];
+		}
+
+	}
+	cout << decrypted;
+	return decrypted;
 }
 
 string& algorithm::VigenereAlgoritm(string& s)

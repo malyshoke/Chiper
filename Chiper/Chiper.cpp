@@ -9,7 +9,6 @@
     #include <vector>
     #include "algorithm.h"
     #include "des.h"
-    #include"AES_Chiph.h"
     using namespace std;
     using namespace algorithm;
     using Method = std::string&(*) (std::string&);
@@ -31,7 +30,7 @@
         ostringstream buf;
         vector<pair<Method, Method>> methods =
         {
-           {CaesarAlgoritm,DeCaesarAlgoritm}, {DESAlgoritm,DeDESAlgoritm}, {AESAlgoritm,DeAESAlgoritm}, {PlayfairAlgoritm,DePlayfairAlgoritm}, {ElgamalAlgoritm,DeElgamalAlgoritm},
+           {CaesarAlgoritm,DeCaesarAlgoritm}, {DESAlgoritm,DeDESAlgoritm}, {AESAlgoritm,DeAESAlgoritm}, {PlayfairAlgoritm,DePlayfairAlgoritm}, {VigenereAlgoritm,DeVigenereAlgoritm},
 
         };
 

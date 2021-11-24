@@ -20,6 +20,3 @@ Ac turpis egestas sed tempus urna et pharetra pharetra. Amet mauris commodo quis
 
 Encrypted text: 
 Ac turpis egestas sed tempus urna et pharetra pharetra. Amet mauris commodo quis imperdiet.
-Decrypted text: 
-Ac turpis egestas sed tempus urna et pharetra pharetra. Amet mauris commodo quis imperdiet.
-

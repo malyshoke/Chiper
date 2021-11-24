@@ -15,8 +15,8 @@ namespace algorithm
 	std::string& DeAESAlgoritm(std::string& s);
 	std::string& PlayfairAlgoritm(std::string& s);
 	std::string& DePlayfairAlgoritm(std::string& s);
-	std::string& ElgamalAlgoritm(std::string& s);
-	std::string& DeElgamalAlgoritm(std::string& s);
+	std::string& VigenereAlgoritm(std::string& s);
+	std::string& DeVigenereAlgoritm(std::string& s);
 
 };
 

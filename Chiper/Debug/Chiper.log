@@ -1,12 +1,1 @@
-﻿  Chiper.cpp
-C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Chiper.cpp(22,16): warning C4244: return: преобразование "_Rep" в "double", возможна потеря данных
-          with
-          [
-              _Rep=__int64
-          ]
-C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Chiper.cpp(52,41): warning C4244: инициализация: преобразование "_Rep" в "double", возможна потеря данных
-          with
-          [
-              _Rep=__int64
-          ]
-  Chiper.vcxproj -> C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Debug\Chiper.exe
+﻿  Chiper.vcxproj -> C:\Users\Ekaterina\source\repos\Chiper\Chiper\Chiper\Debug\Chiper.exe

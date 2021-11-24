@@ -143,6 +143,7 @@
     <ClCompile Include="Chiper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AES_Chiph.h" />
     <ClInclude Include="algorithm.h" />
     <ClInclude Include="des.h" />
   </ItemGroup>

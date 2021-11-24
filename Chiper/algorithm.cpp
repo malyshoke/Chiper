@@ -275,7 +275,7 @@ cout << __func__ << endl;
 					// Использовать режим кодовой книги
 					cipher = ECB_en(plaintext, key, en);
 					//plaintext = ECB_de(cipher, key, de);
-
+                                        s = cipher;
 
     return s;
 }
@@ -301,7 +301,7 @@ string& algorithm::DeDESAlgoritm(string& s)
 					// Использовать режим кодовой книги
 					cipher = result_en1;//ECB_en(plaintext, key, en);
 					res = ECB_de(cipher, key, de);
-
+                                        s = res;
     return s;
 }
 /*----------------------------------------------------------------------------------ЗДЕСЬ DES КОНЧИЛСЯ---------------------------------------------------------------------*/

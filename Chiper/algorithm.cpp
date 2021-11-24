@@ -469,7 +469,7 @@ string& algorithm::PlayfairAlgoritm(string& s)
 		}
 
 	}
-       s = encrypted;
+	s = encrypted;
 	return s;
 }
 
@@ -536,8 +536,8 @@ string& algorithm::DePlayfairAlgoritm(string& str)
 		}
 
 	}
-        s = decrypted;
-	return s;
+	str = decrypted;
+	return str;
 }
 
 string& algorithm::VigenereAlgoritm(string& s)

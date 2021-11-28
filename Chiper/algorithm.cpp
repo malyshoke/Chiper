@@ -1,5 +1,6 @@
 #include "algorithm.h"
 #include "des.h"
+#include <string>
 using namespace std;
 using namespace algorithm;
 string result_en1;
@@ -317,8 +318,10 @@ string& algorithm::DeAESAlgoritm(string& s)
    
 }
 
+/*----------------------------------------------------------------------------------ПЛЕЙФЕР НАЧАЛО---------------------------------------------------------------------*/
 
-int len(string s) {
+int len(string s) 
+{
 	int l = 0;
 	for (int i = 0; s[i] != '\0'; i++) {
 		l++;
@@ -346,7 +349,7 @@ string& algorithm::PlayfairAlgoritm(string& s)
 	cin >> key;*/
 	string key;
 	cout << __func__ << endl;
-	key = "programmer";
+	key = "ma";
 	int k_len = len(key);
 
 	int m_len = len(s);
@@ -486,7 +489,7 @@ string& algorithm::DePlayfairAlgoritm(string& str)
 	cin >> key;*/
 	string key;
 	cout << __func__ << endl;
-	key = "programmer";
+	key = "ma";
 	int k_len = len(key);
 	encrypted = str;
 	string decrypted;
@@ -521,7 +524,8 @@ string& algorithm::DePlayfairAlgoritm(string& str)
 			decrypted += M[ch1_i][ch1_j];
 			decrypted += M[ch1_i][ch2_j];
 		}
-		if (ch1_j == ch2_j) {
+		if (ch1_j == ch2_j) 
+		{
 			ch1_i -= 1;
 			if (ch1_i < 0) {
 				ch1_i = 5 - ch1_i;
@@ -537,14 +541,16 @@ string& algorithm::DePlayfairAlgoritm(string& str)
 			int temp = ch1_i;
 			ch1_i = ch2_i;
 			ch2_i = temp;
+
 			decrypted += M[ch1_i][ch1_j];
 			decrypted += M[ch2_i][ch2_j];
 		}
-
 	}
 	str = decrypted;
 	return str;
 }
+
+/*----------------------------------------------------------------------------------ПЛЕЙФЕР КОНЕЦ---------------------------------------------------------------------*/
 
 string& algorithm::VigenereAlgoritm(string& s)
 {	
